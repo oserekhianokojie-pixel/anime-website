@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Anime World is Timothy's fan-made home for anime reviews, top favorites, and recommendations.">
+  <title>Anime World | Reviews, Favorites &amp; Recommendations</title>
+  <style>
+    :root { --bg:#090d18;--panel:#12192b;--panel-2:#171f33;--line:rgba(189,204,234,.14);--text:#f7f8fc;--muted:#9baac2;--orange:#ff8550;--yellow:#ffcc72;--purple:#a88cff;--max:1160px; }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+    body::before{content:"";position:absolute;z-index:-1;top:0;left:0;right:0;height:950px;background:radial-gradient(ellipse 65% 46% at 78% 12%,rgba(103,71,174,.18),transparent 75%),radial-gradient(ellipse 62% 55% at 2% 4%,rgba(255,109,58,.1),transparent 80%);pointer-events:none}
+    a{color:inherit;text-decoration:none}a:hover{color:var(--orange)}button,input{font:inherit}button{cursor:pointer}img{max-width:100%;display:block}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
+    .container{width:min(var(--max),calc(100% - 42px));margin-inline:auto}
+    .skip{position:absolute;top:-80px;left:20px;z-index:30;background:#fff;color:#111;padding:12px 16px;border-radius:9px}.skip:focus{top:14px}
+    .site-header{position:sticky;top:0;z-index:25;background:rgba(9,13,24,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:inline-flex;align-items:center;gap:11px;font-size:1.18rem;font-weight:900;letter-spacing:-.5px;white-space:nowrap}
+    .brand-symbol{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;color:#161024;background:linear-gradient(135deg,var(--yellow),var(--orange) 65%,#ff5570);font-weight:1000;font-size:1.45rem;box-shadow:0 9px 30px rgba(255,117,82,.21)}
+    .brand b{color:var(--orange)}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none;padding:0;margin:0}.nav-links a{color:#d8deeb;font-size:.9rem;font-weight:680;transition:color .2s}.nav-links a:hover{color:var(--orange)}
+    .nav-cta{border:1px solid rgba(255,147,94,.35);background:rgba(255,132,80,.11);border-radius:99px;padding:9px 17px;color:#ffc29f!important}
+    .menu-toggle{display:none;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;padding:7px 12px;font-size:1.3rem;line-height:1.2}
+    .hero{padding:84px 0 85px;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;min-height:640px}
+    .eyebrow,.section-kicker{font-size:.74rem;letter-spacing:2.8px;font-weight:850;text-transform:uppercase;color:var(--orange)}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:17px}.eyebrow::before{content:"";height:8px;width:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px rgba(255,133,80,.12)}
+    h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.15;letter-spacing:-.04em}
+    h1{font-size:clamp(3.55rem,6vw,5.7rem);font-weight:900;letter-spacing:-.065em;margin-bottom:24px}h1 em{font-style:normal;color:var(--orange)}
+    .hero-text>p{font-size:1.08rem;line-height:1.85;max-width:505px;color:var(--muted);margin-bottom:29px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;border-radius:12px;font-size:.91rem;font-weight:800;min-height:48px;padding:12px 20px;border:1px solid transparent;transition:transform .2s,background .2s,box-shadow .2s;color:var(--text)}
+    .btn:hover{transform:translateY(-2px);color:var(--text)}.btn-primary{background:linear-gradient(105deg,#ff9857,#fb675f);color:#1b1016;box-shadow:0 10px 28px rgba(255,122,87,.19)}.btn-primary:hover{color:#1b1016;box-shadow:0 12px 32px rgba(255,122,87,.28)}.btn-secondary{border-color:var(--line);background:rgba(255,255,255,.04)}.btn-secondary:hover{background:rgba(255,255,255,.09)}
+    .hero-meta{margin-top:45px;display:flex;gap:26px;flex-wrap:wrap}.hero-meta span{color:var(--muted);font-size:.81rem;line-height:1.35}.hero-meta strong{display:block;color:var(--text);font-size:1.28rem}
+    .hero-art{height:505px;position:relative;isolation:isolate}.hero-art::before{content:"";position:absolute;inset:15% 1% 5%;border-radius:50%;background:#8d527a;filter:blur(95px);opacity:.26;z-index:-1}
+    .poster{position:absolute;border:6px solid #20283a;border-radius:17px;overflow:hidden;box-shadow:0 35px 65px rgba(0,0,0,.43);background:var(--panel)}.poster img{height:100%;width:100%;object-fit:cover}
+    .poster--main{height:455px;width:64%;left:17%;top:11px;z-index:3;transform:rotate(-2deg)}.poster--left{height:330px;width:43%;left:-1%;top:137px;z-index:2;transform:rotate(-13deg)}.poster--right{height:336px;width:45%;right:-3%;top:121px;z-index:1;transform:rotate(13deg)}
+    .float-badge{position:absolute;right:-4%;top:0;z-index:4;background:#fff3dc;color:#27182b;border-radius:12px;padding:10px 16px;font-size:.8rem;font-weight:900;box-shadow:0 14px 30px #0006;transform:rotate(9deg)}
+    .section{padding:88px 0}.section-alt{background:#101628;border-block:1px solid rgba(190,204,235,.07)}.section-header{display:flex;justify-content:space-between;gap:26px;align-items:end;margin-bottom:32px}.section-header h2{font-size:clamp(2rem,4vw,3rem);margin:10px 0}.section-header p{color:var(--muted);max-width:490px;margin:0}.section-intro{color:var(--muted);max-width:700px}
+    .review-controls{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:29px}.filters{display:flex;gap:9px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:rgba(255,255,255,.035);color:#bfcae0;border-radius:100px;padding:9px 16px;font-size:.84rem;font-weight:750}.filter:hover,.filter.active{border-color:var(--orange);color:#201017;background:var(--orange)}
+    .search-field{position:relative}.search-field span{position:absolute;top:50%;transform:translateY(-50%);left:15px;color:var(--muted);pointer-events:none}.search-field input{width:min(100%,250px);padding:10px 14px 10px 41px;border-radius:10px;background:var(--panel);border:1px solid var(--line);color:#fff;font-size:.87rem}.search-field input::placeholder{color:#8f9cb0}
+    .results-line{color:var(--muted);font-size:.84rem;margin:-13px 0 18px}
+    .review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px;align-items:stretch}
+    .anime-card{background:var(--panel);border:1px solid var(--line);border-radius:19px;overflow:hidden;display:flex;flex-direction:column;transition:transform .22s,border-color .22s}.anime-card:hover{transform:translateY(-5px);border-color:rgba(255,154,91,.4)}.anime-card[hidden]{display:none}
+    .card-poster{height:305px;position:relative;overflow:hidden;background:#24273a}.card-poster img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:transform .5s}.anime-card:hover .card-poster img{transform:scale(1.05)}.poster-chip{position:absolute;top:16px;left:16px;padding:6px 12px;background:rgba(10,13,24,.83);backdrop-filter:blur(10px);font-size:.74rem;font-weight:850;border-radius:30px}
+    .card-content{padding:23px;display:flex;flex-direction:column;flex:1}.card-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}.tag{font-size:.73rem;background:rgba(159,143,255,.13);border:1px solid rgba(166,147,255,.15);color:#c5b8ff;border-radius:99px;padding:4px 10px}
+    .card-content h3{font-size:1.5rem;margin-bottom:9px}.card-content>p{color:var(--muted);font-size:.91rem;line-height:1.75;margin-bottom:20px}.card-details{margin-top:auto;border-top:1px solid var(--line);padding-top:17px}.card-details summary{color:var(--orange);font-size:.88rem;font-weight:850;cursor:pointer;list-style:none}.card-details summary::-webkit-details-marker{display:none}.card-details summary::after{content:" +"}.card-details[open] summary::after{content:" −"}.card-details p{color:#b7c2d5;font-size:.86rem;margin:12px 0 0;line-height:1.72}
+    .no-results{border:1px dashed var(--line);border-radius:16px;padding:25px;text-align:center;color:var(--muted)}.no-results[hidden]{display:none}
+    .favorites-list{display:grid;gap:12px;margin-top:35px}.favorite{display:grid;grid-template-columns:92px 1fr auto;align-items:center;gap:22px;border:1px solid var(--line);border-radius:16px;padding:22px 25px;background:rgba(255,255,255,.025);transition:background .2s}.favorite:hover{background:rgba(255,255,255,.06)}.favorite-rank{font-size:3.4rem;font-weight:950;line-height:1;letter-spacing:-.08em;color:var(--orange)}.favorite:nth-child(2) .favorite-rank{color:var(--purple)}.favorite:nth-child(3) .favorite-rank{color:var(--yellow)}.favorite h3{font-size:1.35rem;margin:0 0 5px}.favorite p{font-size:.88rem;margin:0;color:var(--muted)}.favorite-label{font-size:.78rem;font-weight:800;padding:7px 12px;border-radius:99px;background:var(--panel-2);border:1px solid var(--line);color:#c6d0df;white-space:nowrap}
+    .discovery{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;border:1px solid rgba(255,168,112,.2);border-radius:24px;padding:45px;background:radial-gradient(circle at 90% 10%,rgba(255,124,76,.13),transparent 45%),linear-gradient(135deg,#1a2037,#141728)}
+    .discovery h2{font-size:clamp(2rem,4vw,3.1rem);margin:9px 0 17px}.discovery p{color:var(--muted);max-width:520px}
+    .random-card{min-height:268px;background:rgba(6,9,20,.46);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;justify-content:center}.random-top{color:var(--orange);letter-spacing:2px;font-weight:850;font-size:.7rem;text-transform:uppercase;margin-bottom:11px}.random-card h3{font-size:1.75rem;margin-bottom:10px}.random-card p{font-size:.93rem;margin-bottom:17px}.random-card a{color:#ffd0a1;font-weight:800;font-size:.88rem}.random-card a:hover{text-decoration:underline}
+    .explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.explore-card{min-height:207px;padding:24px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(125deg,#1b2741,#11182b);position:relative;overflow:hidden}.explore-card:nth-child(2){background:linear-gradient(125deg,#26303f,#191424)}.explore-card:nth-child(3){background:linear-gradient(125deg,#26324c,#17253c)}.explore-icon{font-size:2rem;margin-bottom:23px}.explore-card h3{font-size:1.23rem;margin-bottom:9px}.explore-card p{color:var(--muted);font-size:.86rem;line-height:1.65;position:relative;z-index:1}.explore-card::after{content:"";position:absolute;right:-40px;bottom:-75px;width:195px;height:195px;border:28px solid rgba(255,255,255,.035);border-radius:50%}
+    .about-layout{display:grid;grid-template-columns:310px 1fr;gap:65px;align-items:center}.about-portrait{aspect-ratio:1;background:radial-gradient(circle at 20% 20%,#3d3d72,#171c32 68%);border:1px solid var(--line);border-radius:24px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.about-portrait strong{font-size:10rem;letter-spacing:-.1em;font-weight:950;color:var(--orange);text-shadow:16px 18px #ff8c4940}.about-portrait::after{content:"ANIME FAN SINCE DAY ONE";position:absolute;bottom:25px;font-size:.73rem;letter-spacing:3px;color:#d7c4df;font-weight:900;text-align:center}.about h2{font-size:clamp(2rem,4vw,3rem);margin:9px 0 20px}.about p{color:var(--muted);max-width:650px;margin-bottom:18px}.about-signoff{color:var(--orange);font-weight:850;letter-spacing:.02em}
+    .site-footer{border-top:1px solid var(--line);padding:29px 0}.footer-content{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}.site-footer p{font-size:.78rem;color:var(--muted);margin:0}.back-top{font-size:.86rem;font-weight:850;color:#ffb492}
+    @media(max-width:930px){.nav-links{gap:16px}.hero{grid-template-columns:1fr 1fr;gap:12px}.hero-art{height:440px}.poster--main{height:394px}.poster--left,.poster--right{height:290px}.review-grid{gap:13px}.card-content{padding:18px}.discovery{padding:32px}.about-layout{gap:35px}}
+    @media(max-width:700px){.container{width:min(var(--max),calc(100% - 32px))}.nav{height:68px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 22px;background:#101627;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:12px;box-shadow:0 15px 30px #0005}.nav-links.open{display:flex}.nav-links a{display:block;padding:8px 10px}.nav-cta{width:max-content}.hero{padding:54px 0 45px;display:flex;flex-direction:column;gap:35px;min-height:0}.hero-text{width:100%}.hero-text>p{font-size:1rem}.hero-art{width:min(100%,420px);height:410px;align-self:center}.poster--main{height:360px}.poster--left,.poster--right{height:260px}.poster--right{right:6%}.float-badge{right:1%}.hero-meta{margin-top:28px}.section{padding:62px 0}.section-header{display:block}.section-header p{margin-top:6px}.review-controls{align-items:stretch}.search-field,.search-field input{width:100%}.review-grid{grid-template-columns:1fr;gap:20px}.anime-card{display:grid;grid-template-columns:40% 60%;min-height:272px}.card-poster{height:100%}.card-content{padding:17px}.card-content h3{font-size:1.3rem}.card-content>p{font-size:.85rem;margin-bottom:12px}.favorite{grid-template-columns:54px 1fr;gap:13px;padding:16px}.favorite-rank{font-size:2.45rem}.favorite-label{grid-column:2;justify-self:start}.discovery{display:block;padding:27px}.random-card{margin-top:27px;min-height:220px}.explore-grid{grid-template-columns:1fr}.explore-card{min-height:175px}.about-layout{grid-template-columns:1fr;gap:28px}.about-portrait{width:min(100%,320px);margin-inline:auto}.footer-content{align-items:flex-start}}
+    @media(max-width:440px){h1{font-size:3.2rem}.hero-actions .btn{width:100%}.hero-art{height:330px}.poster{border-width:4px}.poster--main{height:293px}.poster--left,.poster--right{height:207px}.float-badge{font-size:.65rem}.card-poster{height:265px}.anime-card{display:flex}.card-content{padding:22px}.favorite{grid-template-columns:50px 1fr}.filter{font-size:.76rem;padding:8px 12px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Anime World home"><span class="brand-symbol" aria-hidden="true">✦</span><span>Anime <b>World.</b></span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#home">Home</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#favorites">Favorites</a></li><li><a href="#discover">Discover</a></li><li><a href="#about" class="nav-cta">About me ↗</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section id="home" class="hero container" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <span class="eyebrow">Welcome to my anime universe</span>
+        <h1 id="hero-title">Big stories.<br>Epic worlds.<br><em>Pure anime.</em></h1>
+        <p>From intense mind games to unforgettable battles, explore the shows that make anime special to me. Reviews, favorites, and recommendations—all in one place.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#reviews">Explore reviews <span aria-hidden="true">→</span></a><a class="btn btn-secondary" href="#favorites">My top 3 <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-meta"><span><strong>03</strong>favorite series</span><span><strong>03</strong>full reviews</span><span><strong>∞</strong>stories to discover</span></div>
+      </div>
+      <div class="hero-art" aria-label="Original artwork inspired by Death Note, Naruto, and Attack on Titan">
+        <div class="poster poster--left"><img data-art="naruto" alt="Orange ninja-inspired artwork for Naruto"></div>
+        <div class="poster poster--right"><img data-art="titan" alt="Sunset fortress-inspired artwork for Attack on Titan"></div>
+        <div class="poster poster--main"><img data-art="death" alt="Dark notebook-inspired artwork for Death Note"></div>
+        <span class="float-badge">✦ Timothy's picks</span>
+      </div>
+    </section>
+    <section id="reviews" class="section section-alt" aria-labelledby="reviews-title"><div class="container">
+      <div class="section-header"><div><span class="section-kicker">The lineup</span><h2 id="reviews-title">Anime reviews<span style="color:var(--orange)">.</span></h2></div><p>Three very different series. Great characters, unforgettable moments, and plenty to talk about.</p></div>
+      <div class="review-controls"><div class="filters" role="group" aria-label="Filter reviews by genre"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All reviews</button><button type="button" class="filter" data-filter="thriller" aria-pressed="false">Thriller</button><button type="button" class="filter" data-filter="action" aria-pressed="false">Action</button><button type="button" class="filter" data-filter="adventure" aria-pressed="false">Adventure</button></div><label class="search-field"><span aria-hidden="true">⌕</span><input id="anime-search" type="search" placeholder="Search anime..." aria-label="Search anime reviews"></label></div>
+      <p class="results-line" id="result-count" aria-live="polite">Showing 3 reviews</p>
+      <div class="review-grid" id="review-grid">
+        <article class="anime-card" id="review-death-note" data-title="death note" data-genres="thriller" data-keywords="mystery psychological suspense light yagami detective">
+          <div class="card-poster"><img data-art="death" alt="Original Death Note themed illustration" loading="lazy"><span class="poster-chip">Psychological thriller</span></div>
+          <div class="card-content"><div class="card-tags"><span class="tag">Mystery</span><span class="tag">Suspense</span></div><h3>Death Note</h3><p>When high school student Light Yagami finds a notebook with deadly powers, his idea of justice turns into a dangerous battle of wits.</p>
+          <details class="card-details"><summary>Read my review</summary><p><strong>What makes it stand out:</strong> The constant mind games, moral questions, and rivalry between Light and L keep the tension high. It's a great choice if you like clever characters and unpredictable twists.</p></details></div>
+        </article>
+        <article class="anime-card" id="review-attack-on-titan" data-title="attack on titan" data-genres="action" data-keywords="dark fantasy survival eren titans mystery drama">
+          <div class="card-poster"><img data-art="titan" alt="Original Attack on Titan themed illustration" loading="lazy"><span class="poster-chip">Dark fantasy</span></div>
+          <div class="card-content"><div class="card-tags"><span class="tag">Action</span><span class="tag">Drama</span></div><h3>Attack on Titan</h3><p>Behind enormous walls, humanity fights to survive against the Titans—and discovers that the truth about its world is far more complicated.</p>
+          <details class="card-details"><summary>Read my review</summary><p><strong>What makes it stand out:</strong> Its high-stakes action, mysteries, difficult choices, and evolving characters make every major revelation feel important. The story rewards paying attention.</p></details></div>
+        </article>
+        <article class="anime-card" id="review-naruto" data-title="naruto" data-genres="adventure" data-keywords="ninja shonen action friendship village training growth">
+          <div class="card-poster"><img data-art="naruto" alt="Original Naruto themed illustration" loading="lazy"><span class="poster-chip">Ninja adventure</span></div>
+          <div class="card-content"><div class="card-tags"><span class="tag">Adventure</span><span class="tag">Friendship</span></div><h3>Naruto</h3><p>A young ninja dreams of earning his village's respect and becoming Hokage, meeting rivals, mentors, and lifelong friends along the way.</p>
+          <details class="card-details"><summary>Read my review</summary><p><strong>What makes it stand out:</strong> Naruto's determination is inspiring, and the mix of training, epic fights, and emotional friendships gives this long-running story its heart.</p></details></div>
+        </article>
+      </div>
+      <div class="no-results" id="no-results" hidden>No matches yet. Try another name or choose <strong>All reviews</strong>.</div>
+    </div></section>
+    <section id="favorites" class="section" aria-labelledby="favorites-title"><div class="container">
+      <div class="section-header"><div><span class="section-kicker">My personal list</span><h2 id="favorites-title">Top 3 favorites<span style="color:var(--orange)">.</span></h2></div><p>The original three shows that inspired Anime World, in my preferred order.</p></div>
+      <div class="favorites-list">
+        <a class="favorite" href="#review-death-note"><span class="favorite-rank">01</span><div><h3>Death Note</h3><p>For the strategy, tension, and unforgettable battle of minds.</p></div><span class="favorite-label">Mind games ↗</span></a>
+        <a class="favorite" href="#review-attack-on-titan"><span class="favorite-rank">02</span><div><h3>Attack on Titan</h3><p>For the huge twists, layered story, and intense action.</p></div><span class="favorite-label">Epic story ↗</span></a>
+        <a class="favorite" href="#review-naruto"><span class="favorite-rank">03</span><div><h3>Naruto</h3><p>For the rivalries, friendships, and never-give-up attitude.</p></div><span class="favorite-label">Inspiring ↗</span></a>
+      </div>
+    </div></section>
+    <section id="discover" class="section section-alt" aria-labelledby="discover-title"><div class="container">
+      <div class="discovery"><div><span class="section-kicker">Can't pick what to watch?</span><h2 id="discover-title">Let fate choose your next anime.</h2><p>Need something to watch? Hit the button for a random suggestion from my favorites and a few other popular series worth exploring.</p><button type="button" class="btn btn-primary" id="random-button">✦ Surprise me</button></div>
+        <div class="random-card" id="recommendation" aria-live="polite"><span class="random-top">Today's recommendation</span><h3 id="pick-title">Ready for a new adventure?</h3><p id="pick-description">Click “Surprise me” to discover your next watch, based on different styles of anime.</p><a id="pick-link" href="#reviews">Browse the reviews →</a></div>
+      </div>
+      <div style="margin-top:74px" class="section-header"><div><span class="section-kicker">Beyond my top three</span><h2>More to explore<span style="color:var(--orange)">.</span></h2></div><p>If you finish the top picks, these series give you even more stories to dive into.</p></div>
+      <div class="explore-grid">
+        <article class="explore-card"><div class="explore-icon" aria-hidden="true">⚔️</div><h3>Demon Slayer</h3><p>Beautifully animated sword fights and a moving story about family.</p></article>
+        <article class="explore-card"><div class="explore-icon" aria-hidden="true">⚡</div><h3>Jujutsu Kaisen</h3><p>Supernatural battles, powerful characters, and nonstop energy.</p></article>
+        <article class="explore-card"><div class="explore-icon" aria-hidden="true">🏴‍☠️</div><h3>One Piece</h3><p>A massive pirate adventure built around dreams, friendship, and discovery.</p></article>
+      </div>
+    </div></section>
+    <section id="about" class="section about" aria-labelledby="about-title"><div class="container about-layout">
+      <div class="about-portrait" aria-label="Timothy's initial T represented as an illustrated portrait placeholder"><strong>T.</strong></div>
+      <div><span class="section-kicker">Behind the website</span><h2 id="about-title">Hey, I'm Timothy<span style="color:var(--orange)">.</span></h2><p>Welcome to my corner of the anime world! I enjoy shows filled with action, interesting characters, surprising twists, and stories that stay with you long after the final episode.</p><p>I built Anime World to share some of my favorite series and explain what makes each one special. Whether you're just getting into anime or you've been watching for years, I hope you find something here that catches your interest.</p><span class="about-signoff">Thanks for stopping by! ✦</span></div>
+    </div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-content"><a href="#home" class="brand"><span class="brand-symbol" aria-hidden="true">✦</span><span>Anime <b>World.</b></span></a><p>© <span id="year">2026</span> Timothy. A fan-made website created for the love of anime.</p><a class="back-top" href="#home">Back to top ↑</a></div></footer>
+  <script>
+    (() => {
+      'use strict';
+      // The original illustrations are embedded in this HTML so the site works offline.
+      const artwork = { death: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNjgwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik9yaWdpbmFsIHJlZCBhbmQgYmxhY2sgRGVhdGggTm90ZSBpbnNwaXJlZCBpbGx1c3RyYXRpb24iPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBpZD0iYmciPjxzdG9wIHN0b3AtY29sb3I9IiM3ZTFiMzYiLz48c3RvcCBvZmZzZXQ9Ii40NiIgc3RvcC1jb2xvcj0iIzM1MTAxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBiMTAxZCIvPjwvcmFkaWFsR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJwYWdlIiB4Mj0iLjk1IiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iI2Y1ZTdkYSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E5YTBhNCIvPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0iZ2xvdyI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTMiLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjUwMCIgaGVpZ2h0PSI2ODAiIGZpbGw9InVybCgjYmcpIi8+PGNpcmNsZSBjeD0iMjkyIiBjeT0iMjQ1IiByPSIxNjAiIGZpbGw9IiNmZjQyNTQiIG9wYWNpdHk9Ii4xOCIgZmlsdGVyPSJ1cmwoI2dsb3cpIi8+PGNpcmNsZSBjeD0iMjkyIiBjeT0iMjQ1IiByPSIxNDMiIGZpbGw9IiNmMjRhNjAiIG9wYWNpdHk9Ii4xOCIvPjxjaXJjbGUgY3g9IjI5MiIgY3k9IjI0NSIgcj0iMTI1IiBmaWxsPSIjZmY2ZjdhIiBvcGFjaXR5PSIuMTMiLz48cGF0aCBkPSJNODUgMEwwIDIzNVYwTTUwMCAwTDQwMiA5MGw5OCAxMjMiIGZpbGw9IiMwODBlMWIiIG9wYWNpdHk9Ii43Ii8+PGcgZmlsbD0iIzBhMGUxOCI+PHBhdGggZD0iTTE3OSA0NDlxLTI4LTQyLTIzLTk0bDEyLTY1IDIwLTI3LTctMjYgMTggOSAyMi0zNCAxMiAxNSAyMi00MCAxNSAyMyAxNy0xMS00IDQ0cTU2IDcxIDM1IDE0OWwtNiA1MCA4NiA1MCA1NCAxODhINDJsNjMtMTc3eiIvPjxwYXRoIGQ9Ik0xNTkgMzkwbC00OCA2Mi0yNSAxMTEgODAgMTAgNTQtMTAzIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyOCAzNzIpIHJvdGF0ZSgtMTIpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTgzIiBoZWlnaHQ9IjIzNyIgcng9IjciIGZpbGw9IiMwOTBkMTgiIHN0cm9rZT0iI2QyNDc1OSIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHJlY3QgeD0iMTMiIHk9IjEzIiB3aWR0aD0iMTU3IiBoZWlnaHQ9IjIwOSIgcng9IjIiIGZpbGw9InVybCgjcGFnZSkiLz48cGF0aCBkPSJNMjggNjRoMTIyTTI4IDgzaDEyMk0yOCAxMDJoMTIyTTI4IDEyMWgxMjJNMjggMTQwaDEyMk0yOCAxNTloMTIyTTI4IDE3OGgxMDAiIHN0cm9rZT0iIzhiNzY4MCIgb3BhY2l0eT0iLjUiLz48dGV4dCB4PSI5MiIgeT0iNDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMjMxYzI0Ij5ERUFUSCBOT1RFPC90ZXh0PjwvZz48cGF0aCBkPSJNMCA1ODdxMTQwLTQ4IDI2NSAwdDIzNS00MHYxMzNIMCIgZmlsbD0iIzA3MGIxNCIgb3BhY2l0eT0iLjY4Ii8+PHRleHQgeD0iMzQiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgbGV0dGVyLXNwYWNpbmc9IjciIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNmZmQ3ZGYiIG9wYWNpdHk9Ii44MyI+VEhFIFBPV0VSIE9GIEEgTkFNRTwvdGV4dD48dGV4dCB4PSIzMSIgeT0iNjI5IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSI0OSIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSItMiI+REVBVEggTk9URTwvdGV4dD48dGV4dCB4PSIzNCIgeT0iNjU1IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIxMiIgbGV0dGVyLXNwYWNpbmc9IjUiIGZpbGw9IiNmOThkOWIiPk1ZU1RFUlkg4oCiIE1JTkQgR0FNRVM8L3RleHQ+PC9zdmc+', titan: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNjgwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik9yaWdpbmFsIHN1bnNldCBhbmQgZm9ydHJlc3Mgd2FsbHMgQXR0YWNrIG9uIFRpdGFuIGluc3BpcmVkIGlsbHVzdHJhdGlvbiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJza3kiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzJhMjMzNCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjYjU0ODNkIi8+PHN0b3Agb2Zmc2V0PSIuNzciIHN0b3AtY29sb3I9IiNmMzkyNTgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyNzE5MjgiLz48L2xpbmVhckdyYWRpZW50PjxyYWRpYWxHcmFkaWVudCBpZD0ic3VuIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZlNGEzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmJiMzVmIiBzdG9wLW9wYWNpdHk9IjAiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjY4MCIgZmlsbD0idXJsKCNza3kpIi8+PGNpcmNsZSBjeD0iMjkwIiBjeT0iMjU1IiByPSIxOTAiIGZpbGw9InVybCgjc3VuKSIgb3BhY2l0eT0iLjgiLz48ZyBvcGFjaXR5PSIuMjIiIHN0cm9rZT0iI2ZmZDVhMSIgc3Ryb2tlLXdpZHRoPSI4Ij48cGF0aCBkPSJNLTMwIDIxNUw1MTAgMTcwTS0zMCAyNjVMNTEwIDIyNU0tMzAgMzIwTDUxMCAyNjAiLz48L2c+PHBhdGggZD0iTTM0MiA2MmMtNjUgNi05MiA1NC0xMDEgMTExLTYgNDctMSAxMTEgMTIgMTM4bC0yOSA4MiAxNTEgOSAyNS05NGMyNi0zNiAyNy0xMDggMTMtMTY1LTEyLTQ0LTI2LTY2LTcxLTgxIiBmaWxsPSIjMzMyYzM1IiBvcGFjaXR5PSIuNzciLz48cGF0aCBkPSJNMjY2IDIyN2w0OS0xMS0xMCAxOS0zNCA1bTcwLTExIDQ4LTQtMTIgMTctMjctNSIgZmlsbD0iI2VhYTA3OCIvPjxnIHN0cm9rZT0iIzExMTYyMCIgc3Ryb2tlLXdpZHRoPSI3IiBmaWxsPSIjM2IyZTM2Ij48cGF0aCBkPSJNMCA0MjBoNTAwdjE4OUgweiIvPjxwYXRoIGQ9Ik0wIDM4Nmg2MnY0MEgwek05NiAzODZoNjJ2NDBIOTZ6TTE5MSAzODZoNjJ2NDBoLTYyek0yODcgMzg2aDYydjQwaC02MnpNMzg0IDM4Nmg2MnY0MGgtNjJ6Ii8+PHBhdGggZD0iTTM4IDQ4MWg0MjRNMzggNTMyaDQyNE04MiA0MjJ2MTg3TTE3NiA0MjJ2MTg3TTI2OSA0MjJ2MTg3TTM3MCA0MjJ2MTg3IiBzdHJva2U9IiNhNTYzNTIiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iLjUiLz48L2c+PHBhdGggZD0iTTAgNjExcTYwLTQzIDEyMy0zMGw4My02NSA1OSAyNiAyNSA3MSA1Ny01MiAxNTMgMzJ2ODdIMHoiIGZpbGw9IiMxNDE5MjMiLz48ZyBmaWxsPSIjMDgwZDE1Ij48Y2lyY2xlIGN4PSIyNTMiIGN5PSI0NzQiIHI9IjI0Ii8+PHBhdGggZD0iTTIzNCA0OTNsLTMyIDc2LTcwIDU5IDEwMy0zMCAxOS00OCAyMSA0OSA3OCA0My01Ny03Ni0xNy03MnoiLz48cGF0aCBkPSJNMjI0IDQ5N2wtNzYgMzAgNjAgMTdNMjc5IDQ5Nmw3MyAzNi01NyAxMiIvPjwvZz48dGV4dCB4PSIyOSIgeT0iNjUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBsZXR0ZXItc3BhY2luZz0iNiIgZm9udC1zaXplPSIxNSIgZmlsbD0iI2ZmZjBkOSI+QkVZT05EIFRIRSBXQUxMUzwvdGV4dD48dGV4dCB4PSIyNSIgeT0iNjEzIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzOSIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSItMSI+QVRUQUNLIE9OPC90ZXh0Pjx0ZXh0IHg9IjI1IiB5PSI2NTUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjUxIiBmaWxsPSJ3aGl0ZSIgbGV0dGVyLXNwYWNpbmc9Ii0xIj5USVRBTjwvdGV4dD48L3N2Zz4=', naruto: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNjgwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik9yaWdpbmFsIG9yYW5nZSBuaW5qYSBhbmQgc3dpcmwgTmFydXRvIGluc3BpcmVkIGlsbHVzdHJhdGlvbiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDI9IjAiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZiYTU1Ii8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiNmZjc3MmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiNTJjMzYiLz48L2xpbmVhckdyYWRpZW50PjxyYWRpYWxHcmFkaWVudCBpZD0ic3VuIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZlYjlhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZlMjhhIiBzdG9wLW9wYWNpdHk9IjAiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjY4MCIgZmlsbD0idXJsKCNiZykiLz48Y2lyY2xlIGN4PSIyNTIiIGN5PSIyNDAiIHI9IjIzMCIgZmlsbD0idXJsKCNzdW4pIi8+PGNpcmNsZSBjeD0iMjUyIiBjeT0iMjQ0IiByPSIxNjIiIHN0cm9rZT0iI2ZmZTRhZSIgc3Ryb2tlLXdpZHRoPSIxMiIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iLjQ1Ii8+PHBhdGggZD0iTTM2NyAyNDVhMTE5IDExOSAwIDEgMS0xMTMtMTI0YzYyIDAgOTQgNDAgOTQgNzcgMCAzNS0yMyA1OC01MyA1OC0yNCAwLTM3LTE1LTM3LTMzIDAtMTIgOC0yMSAyMS0yMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZlZmQwIiBzdHJva2Utd2lkdGg9IjE1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii40NSIvPjxnIGZpbGw9IiMxNzI2M2IiPjxwYXRoIGQ9Ik0xNjQgMzkycS0yMi00MC0xNC05M2wtMzEtMjEgNDItMTUtNy0zOSAzMiA4IDE2LTQyIDMxIDMwIDQwLTQ2IDExIDM4IDM5LTIzIDMgNDEgNDIgMS0yMyAzNCAyOCAyOS00MiA3cTYgNjUtMTEgOTV6Ii8+PHBhdGggZD0iTTE1MCAzODJxLTUxIDI2LTcyIDg2bC01MiAxMjcgMTA1LTI1IDQ5LTgzIDMwIDE2MWgxNzFsMjktMTYxIDQ2IDgzIDcwIDEwLTQyLTEyNXEtMTUtNTItODMtNzN6Ii8+PC9nPjxyZWN0IHg9IjE2MSIgeT0iMjg1IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjQxIiByeD0iMTEiIGZpbGw9IiNlNmViZWMiIHN0cm9rZT0iIzE1MjYzYiIgc3Ryb2tlLXdpZHRoPSI5Ii8+PHBhdGggZD0iTTIyMiAzMDlxMzYtMzcgNjUgMC0yMCA0LTI1IDEyLTE0LTI0LTQwLTEyIiBmaWxsPSJub25lIiBzdHJva2U9IiM2NTc1OGEiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE4NyAzNDhsNDIgNU0zMDcgMzUzbDQxLTciIHN0cm9rZT0iI2U4YTQ1ZCIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE3NSA0NThoMTU3TTIwMCA1MDBoMTIxIiBzdHJva2U9IiNmZjlmNGIiIHN0cm9rZS13aWR0aD0iOSIgb3BhY2l0eT0iLjY1Ii8+PGcgc3Ryb2tlPSIjMTcxZTJlIiBzdHJva2Utd2lkdGg9IjciIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii43Ij48cGF0aCBkPSJNMjQgMTcwbDkyLTYxTTM3OSA5M2w4NC0zN00zMSAzNDZsMTAxLTI0Ii8+PC9nPjxwYXRoIGQ9Ik0wIDU3NHExMzQtMjQgMjMxIDl0MjY5LTh2MTA1SDAiIGZpbGw9IiMxNjFjMmQiIG9wYWNpdHk9Ii42NiIvPjx0ZXh0IHg9IjI4IiB5PSI2OCIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGxldHRlci1zcGFjaW5nPSI3IiBmb250LXNpemU9IjE1IiBmaWxsPSIjNDMyMzMxIj5ORVZFUiBHSVZFIFVQPC90ZXh0Pjx0ZXh0IHg9IjI0IiB5PSI2NDAiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjcyIiBmaWxsPSJ3aGl0ZSIgbGV0dGVyLXNwYWNpbmc9Ii0yIj5OQVJVVE88L3RleHQ+PHRleHQgeD0iMjgiIHk9IjY2NSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTIiIGxldHRlci1zcGFjaW5nPSI1IiBmaWxsPSIjZmZkZWFlIj5OSU5KQVMg4oCiIEZSSUVORFNISVAg4oCiIEdST1dUSDwvdGV4dD48L3N2Zz4=' };
+      document.querySelectorAll('img[data-art]').forEach(img => { img.src = artwork[img.dataset.art]; });
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const menuButton = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('nav-links');
+      menuButton.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        menuButton.textContent = isOpen ? '✕' : '☰';
+      });
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        menu.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation'); menuButton.textContent = '☰';
+      }));
+
+      const cards = [...document.querySelectorAll('.anime-card')];
+      const filters = [...document.querySelectorAll('.filter')];
+      const search = document.getElementById('anime-search');
+      const count = document.getElementById('result-count');
+      const noResults = document.getElementById('no-results');
+      let selectedGenre = 'all';
+      function updateReviews() {
+        const query = search.value.trim().toLowerCase();
+        let visible = 0;
+        cards.forEach(card => {
+          const genreMatch = selectedGenre === 'all' || card.dataset.genres.split(' ').includes(selectedGenre);
+          const text = `${card.dataset.title} ${card.dataset.genres} ${card.dataset.keywords}`;
+          const show = genreMatch && text.includes(query);
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        count.textContent = `Showing ${visible} ${visible === 1 ? 'review' : 'reviews'}`;
+        noResults.hidden = visible !== 0;
+      }
+      filters.forEach(filter => filter.addEventListener('click', () => {
+        selectedGenre = filter.dataset.filter;
+        filters.forEach(button => {
+          const active = button === filter;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+        updateReviews();
+      }));
+      search.addEventListener('input', updateReviews);
+
+      const shows = [
+        { title:'Death Note', description:'A psychological thriller full of strategy, suspense, and questions about justice.', href:'#review-death-note', link:'Read the Death Note review →' },
+        { title:'Attack on Titan', description:'Try this if you want high-stakes action, huge mysteries, and emotional twists.', href:'#review-attack-on-titan', link:'Read the Attack on Titan review →' },
+        { title:'Naruto', description:'Perfect for an uplifting ninja adventure about growth, loyalty, and never giving up.', href:'#review-naruto', link:'Read the Naruto review →' },
+        { title:'Demon Slayer', description:'A great option if you enjoy emotional stories paired with spectacular animated action.', href:'#discover', link:'See more anime to explore →' },
+        { title:'Jujutsu Kaisen', description:'A fast-moving supernatural series with intense fights and a memorable cast.', href:'#discover', link:'See more anime to explore →' },
+        { title:'One Piece', description:'Get ready for a giant adventure packed with pirates, found family, and big dreams.', href:'#discover', link:'See more anime to explore →' }
+      ];
+      let previous = -1;
+      document.getElementById('random-button').addEventListener('click', () => {
+        let index = Math.floor(Math.random() * (shows.length - (previous === -1 ? 0 : 1)));
+        if (previous !== -1 && index >= previous) index++;
+        previous = index;
+        const pick = shows[index];
+        document.getElementById('pick-title').textContent = pick.title;
+        document.getElementById('pick-description').textContent = pick.description;
+        const link = document.getElementById('pick-link');
+        link.href = pick.href;
+        link.textContent = pick.link;
+      });
+    })();
+  </script>
+</body>
+</html>
